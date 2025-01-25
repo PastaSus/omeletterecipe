@@ -293,6 +293,7 @@ main {
 
 .main-heading {
   color: var(--Dark-Charcoal);
+  font-size: var(--font-size-36);
 }
 
 .main-heading,
