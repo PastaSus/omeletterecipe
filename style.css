@@ -1,3 +1,96 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  line-height: 1.5;
+  font-family: Outfit, sans-serif;
+  margin: 0;
+  color: var(--Wenge-Brown);
+  background-color: var(--Eggshell);
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
 /* The designs were created to the following widths:
 
 - Mobile: 375px
@@ -170,128 +263,32 @@ medium: 11px
   --spacing-128: 8rem; /* 128px */
 }
 
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Prevent font size inflation */
-html {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
-
-/* Remove default margin in favour of better control in authored CSS */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin-block-end: 0;
-}
-
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
-  list-style: none;
-}
-
-/* Set core body defaults */
-body {
-  line-height: 1.5;
-  font-family: Outfit, sans-serif;
-  margin: 0;
-  color: var(--Wenge-Brown);
-  
-}
-
-/* Set shorter line heights on headings and interactive elements */
-h1,
-h2,
-h3,
-h4,
-button,
-input,
-label {
-  line-height: 1.1;
-}
-
-/* Balance text wrapping on headings */
-h1,
-h2,
-h3,
-h4 {
-  text-wrap: balance;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-  color: currentColor;
-}
-
-/* Make images easier to work with */
-img,
-picture {
-  max-width: 100%;
-  display: block;
-}
-
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font-family: inherit;
-  font-size: inherit;
-}
-
-/* Make sure textareas without a rows attribute are not tiny */
-textarea:not([rows]) {
-  min-height: 10em;
-}
-
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 5ex;
-}
-
 main {
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--Eggshell);
+  margin: 10rem auto;
+  /* background-color: var(--Eggshell); */
 }
 
-.container{
-  margin: var(--spacing-128) 22rem;
-  
+.container {
   padding: var(--spacing-32);
 }
 
-.desktopimg{
-  border-radius: 11px;
+.desktopimg {
+  border-radius: 9px;
 }
 
-.phoneimg{
+.phoneimg {
   display: none;
 }
-
-
 
 .recipe-omelette {
   border-radius: 22px;
   background-color: var(--White);
+  max-width: 44rem;
+  height: 100%;
 }
 
 .main-heading {
@@ -306,6 +303,8 @@ main {
 
 .prep-time {
   background-color: var(--preptime-bg);
+  padding: var(--spacing-24);
+  margin-top: var(--spacing-32);
   border-radius: 11px;
 }
 
@@ -318,6 +317,16 @@ main {
   display: flex;
   flex-direction: column;
   align-items: start;
+  margin: var(--spacing-12) 0 0 0;
+  padding-left: var(--spacing-24);
+}
+
+.prep-time ul.wait-time li {
+  margin-bottom: var(--spacing-8);
+}
+
+.prep-time ul.wait-time li:last-child {
+  margin-bottom: 0;
 }
 
 .sub-heading,
@@ -335,6 +344,23 @@ ol li::marker {
 .ingredient {
   border-bottom: 1px solid var(--Light-Grey);
   padding: 0 0 var(--spacing-12) 0;
+}
+
+ul.ingredients {
+  padding-left: var(--spacing-24);
+}
+
+ul.ingredients li {
+  padding-left: var(--spacing-12);
+}
+
+ol.instructions {
+  padding-left: var(--spacing-24);
+}
+
+ol.instructions li {
+  margin-bottom: var(--spacing-12);
+  padding-left: var(--spacing-12);
 }
 
 ol li span,
@@ -364,32 +390,37 @@ tr:last-child {
 
 table.nutri-table th {
   font-weight: 400;
+  text-align: left;
+}
+
+table.nutri-table td {
+  font-weight: 700;
 }
 
 /* media query */
 @media (max-width: 34em) {
-  
-
-  main{
-    justify-content: start; 
+  main {
+    justify-content: start;
     background-color: var(--White);
+    margin: 0;
   }
 
-  .container{
+  /* .container {
     margin: 0;
     padding: 0;
-  }
+  } */
 
   .recipe-omelette {
     padding: var(--spacing-32);
+    border-radius: 0;
     /* min-width: 18rem; */
   }
 
-  .desktopimg{
+  .desktopimg {
     display: none;
   }
 
-  .phoneimg{
+  .phoneimg {
     display: block;
   }
 
@@ -443,7 +474,8 @@ table.nutri-table th {
     margin-bottom: var(--spacing-16);
   }
 
-  th,td{
+  th,
+  td {
     padding: var(--spacing-8);
   }
 }
