@@ -369,6 +369,10 @@ ol.instructions li {
   padding-left: var(--spacing-12);
 }
 
+ul li span {
+  padding-left: var(--spacing-12);
+}
+
 ol li span,
 ul li span {
   color: var(--Wenge-Brown);
