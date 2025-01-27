@@ -91,42 +91,13 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
-/* The designs were created to the following widths:
-
-- Mobile: 375px
-- Desktop: 1440px
-
-> 💡 These are just the design sizes. Ensure content is responsive and meets WCAG requirements by testing the full range of screen sizes from 320px to large screens.
-
-## Colors
-
-### Primary
-
-- Nutmeg: hsl(14, 45%, 36%)
-- Dark Raspberry: hsl(332, 51%, 32%)
-
-### Neutral
-
---White: hsl(0, 0%, 100%)
---Rose-White: hsl(330, 100%, 98%)
---Eggshell: hsl(30, 54%, 90%)
---Light-Grey: hsl(30, 18%, 87%)
---Wenge-Brown: hsl(30, 10%, 34%)
---Dark-Charcoal: hsl(24, 5%, 18%)
+/* 
 
 ## Typography
 
 ### Body Copy
 
 - Font size (paragraph): 16px
-
-### Fonts
-
-- Family: [Young Serif](https://fonts.google.com/specimen/Young+Serif)
-- Weights: 400
-
-- Family: [Outfit](https://fonts.google.com/specimen/Outfit)
-- Weights: 400, 600, 700        */
 
 /* 
 - font-weights
@@ -145,39 +116,6 @@ large: 1.8
 -Letter spacing
 -0.5px
 0.75px
-
-Typography System
-Font Size (px)	Equivalent in rem
-10px	0.625rem
-12px	0.75rem
-14px	0.875rem
-16px	1rem
-18px	1.125rem
-20px	1.25rem
-24px	1.5rem
-30px	1.875rem
-36px	2.25rem
-44px	2.75rem
-52px	3.25rem
-62px	3.875rem
-74px	4.625rem
-86px	5.375rem
-98px	6.125rem
-
-2. Spacing System
-Spacing (px)	Equivalent in rem
-2px	0.125rem
-4px	0.25rem
-8px	0.5rem
-12px	0.75rem
-16px	1rem
-24px	1.5rem
-32px	2rem
-48px	3rem
-64px	4rem
-80px	5rem
-96px	6rem
-128px	8rem
 
 02 colors
 
@@ -263,37 +201,43 @@ medium: 11px
   --spacing-128: 8rem; /* 128px */
 }
 
+/* CSS and Layout Improvements
+
+4)Use a single image for the omelette picture and adjust its styling within a media query. This approach reduces unnecessary HTTP requests and improves page load performance. ✅
+
+5)Remove unnecessary comments in your stylesheet. Cleaning up your stylesheet makes it easier to navigate and helps during code reviews.
+Use padding in sections to create spacing instead of applying margin-top on titles. This makes the design more adaptable across layouts and projects. Check out this article for more insight: Padding vs. Margin. 
+
+6)Follow a mobile-first approach by designing for mobile as the default layout and then using media queries with min-width for larger screens. This ensures better performance across different devices. ✅
+
+7)Use rem units in media queries instead of pixels. This respects users who adjust their browser's default font size, ensuring your design remains accessible and scalable. ✅
+
+8)Update your README. A well-structured README helps others understand your project better. Use the provided template, remove unnecessary sections, and add details about the challenges you faced and the solutions you implemented. This will make your GitHub profile stronger and more professional. */
+
+/* media query under this is desktop */
 main {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 10rem auto;
-  /* background-color: var(--Eggshell); */
-}
-
-.container {
-  padding: var(--spacing-32);
-}
-
-.desktopimg {
-  border-radius: 9px;
-}
-
-.phoneimg {
-  display: none;
+  justify-content: start;
+  background-color: var(--White);
+  margin: 0;
 }
 
 .recipe-omelette {
-  border-radius: 22px;
-  background-color: var(--White);
-  max-width: 44rem;
-  height: 100%;
+  /* padding: var(--spacing-32); */
+
+  /* min-width: 18rem; */
+}
+
+.content {
+  padding: var(--spacing-32);
 }
 
 .main-heading {
-  color: var(--Dark-Charcoal);
+  margin-top: 0;
   font-size: var(--font-size-36);
+  color: var(--Dark-Charcoal);
+  font-weight: 400;
+  text-wrap: wrap;
 }
 
 .main-heading,
@@ -303,39 +247,27 @@ main {
 }
 
 .prep-time {
-  background-color: var(--preptime-bg);
   padding: var(--spacing-24);
-  margin-top: var(--spacing-32);
+  margin: var(--spacing-24) 0 0;
+  background-color: var(--preptime-bg);
   border-radius: 11px;
 }
 
 .prep-time h2 {
   color: var(--Dark-Raspberry);
-  font-size: var(--font-size-18);
+
   margin-top: 0;
 }
 
-.prep-time ul.wait-time {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  margin: var(--spacing-12) 0 0 0;
+.prep-time ul {
   padding-left: var(--spacing-24);
-}
-
-.prep-time ul.wait-time li {
-  margin-bottom: var(--spacing-8);
-}
-
-.prep-time ul.wait-time li:last-child {
   margin-bottom: 0;
 }
-
-.sub-heading,
-ul li::marker,
-ol li::marker,
-td {
-  color: var(--Nutmeg);
+.prep-time ul li {
+  margin-bottom: var(--spacing-16);
+}
+.prep-time ul li:last-child {
+  margin-bottom: 0;
 }
 
 ul li::marker,
@@ -344,13 +276,28 @@ ol li::marker {
 }
 
 .ingredient {
+  padding: var(--spacing-24) 0 var(--spacing-16);
   border-bottom: 1px solid var(--Light-Grey);
-  padding: 0 0 var(--spacing-12) 0;
 }
 
-.ingredient h2.sub-heading {
-  margin-top: var(--spacing-24);
+.ingredient .sub-heading {
+  margin-top: 0;
 }
+
+.sub-heading,
+ul li::marker,
+ol li::marker,
+td {
+  color: var(--Nutmeg);
+}
+/* .prep-time ul li span {
+    margin-left: var(--spacing-16);
+  } */
+
+/* .prep-time h3 {
+    color: var(--Dark-Raspberry);
+    margin-top: 0;
+  } */
 
 ul.ingredients {
   padding-left: var(--spacing-24);
@@ -358,35 +305,46 @@ ul.ingredients {
 
 ul.ingredients li {
   padding-left: var(--spacing-12);
+  margin: 0 0 var(--spacing-12);
 }
 
-ol.instructions {
-  padding-left: var(--spacing-24);
-}
-
-ol.instructions li {
-  margin-bottom: var(--spacing-12);
-  padding-left: var(--spacing-12);
-}
-
-ul li span {
-  padding-left: var(--spacing-12);
-}
-
-ol li span,
-ul li span {
-  color: var(--Wenge-Brown);
-  font-weight: 700;
+ul.ingredients li:last-child {
+  margin-bottom: 0;
 }
 
 .instruction {
   border-bottom: 1px solid var(--Light-Grey);
-  padding: 0 0 var(--spacing-12) 0;
+  padding: var(--spacing-24) 0 var(--spacing-16) 0;
+}
+
+.instruction .sub-heading {
+  margin-top: 0;
+}
+
+ol.instructions {
+  padding: 0 0 0 var(--spacing-24);
+}
+
+ol.instructions li {
+  padding: 0 0 0 var(--spacing-16);
+  margin-bottom: var(--spacing-16);
+}
+
+ul li strong {
+  padding-left: var(--spacing-12);
+}
+
+.nutrition {
+  padding: var(--spacing-24) 0 0 0;
+}
+
+.nutrition .sub-heading {
+  margin-top: 0;
 }
 
 table.nutri-table {
-  margin-top: var(--spacing-16);
   width: 100%;
+  margin-top: var(--spacing-16);
   border-collapse: collapse;
 }
 
@@ -412,65 +370,80 @@ table.nutri-table th {
 table.nutri-table td {
   font-weight: 700;
 }
-
-/* media query */
-@media (max-width: 34em) {
+/* tablet - desktop */
+@media (min-width: 48rem) {
   main {
-    justify-content: start;
-    background-color: var(--White);
-    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10rem auto;
+    background-color: var(--Eggshell);
   }
 
-  /* .container {
-    margin: 0;
+  .container {
+    padding: var(--spacing-32);
+  }
+
+  .content {
     padding: 0;
-  } */
+  }
+
+  .omeletteimg {
+    margin-bottom: var(--spacing-32);
+    border-radius: 9px;
+  }
 
   .recipe-omelette {
-    padding: var(--spacing-32);
-    border-radius: 0;
-    /* min-width: 18rem; */
-  }
-
-  .desktopimg {
-    display: none;
-  }
-
-  .phoneimg {
-    display: block;
+    border-radius: 22px;
+    background-color: var(--White);
+    max-width: 44rem;
+    height: 100%;
   }
 
   .main-heading {
-    margin-top: 0;
+    color: var(--Dark-Charcoal);
     font-size: var(--font-size-36);
+  }
+
+  .main-heading,
+  .sub-heading {
+    font-family: Young serif, serif;
     font-weight: 400;
-    text-wrap: wrap;
   }
 
   .prep-time {
     padding: var(--spacing-24);
-    margin: var(--spacing-24) 0;
+    margin-top: var(--spacing-32);
   }
 
-  .prep-time ul {
+  .prep-time h2 {
+    font-size: var(--font-size-18);
+  }
+
+  .prep-time ul.wait-time {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: var(--spacing-12) 0 0 0;
     padding-left: var(--spacing-24);
-    margin-bottom: 0;
   }
-  .prep-time ul li {
-    margin-bottom: var(--spacing-16);
+
+  .prep-time ul.wait-time li {
+    margin-bottom: var(--spacing-8);
   }
-  .prep-time ul li:last-child {
+
+  .prep-time ul.wait-time li:last-child {
     margin-bottom: 0;
   }
 
-  /* .prep-time ul li span {
-    margin-left: var(--spacing-16);
-  } */
+  .ingredient {
+    border-bottom: 1px solid var(--Light-Grey);
+    padding: 0 0 var(--spacing-12) 0;
+  }
 
-  /* .prep-time h3 {
-    color: var(--Dark-Raspberry);
-    margin-top: 0;
-  } */
+  .ingredient h2.sub-heading {
+    margin-top: var(--spacing-24);
+  }
 
   ul.ingredients {
     padding-left: var(--spacing-24);
@@ -478,20 +451,29 @@ table.nutri-table td {
 
   ul.ingredients li {
     padding-left: var(--spacing-12);
-    margin: 0 0 var(--spacing-12);
   }
 
   ol.instructions {
-    padding: 0 0 0 var(--spacing-24);
+    padding-left: var(--spacing-24);
   }
 
   ol.instructions li {
-    padding: 0 0 0 var(--spacing-16);
-    margin-bottom: var(--spacing-16);
+    margin-bottom: var(--spacing-12);
+    padding-left: var(--spacing-12);
   }
 
-  th,
-  td {
-    padding: var(--spacing-8);
+  ol li strong,
+  ul li strong {
+    color: var(--Wenge-Brown);
+  }
+
+  .instruction {
+    border-bottom: 1px solid var(--Light-Grey);
+    padding: 0 0 var(--spacing-12) 0;
+  }
+
+  table.nutri-table {
+    width: 100%;
+    border-collapse: collapse;
   }
 }
